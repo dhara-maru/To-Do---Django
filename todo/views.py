@@ -31,3 +31,6 @@ def login(request):
             messages.error(request, 'Invalid username or password.')
             return redirect('/login')
     return render(request, 'login.html')
+
+def todo(request):
+    return render(request, 'todo.html')
