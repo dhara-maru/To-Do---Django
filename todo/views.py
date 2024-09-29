@@ -37,4 +37,7 @@ def todo(request):
         title=request.POST.get('title')
         obj = models.todoclass(title=title, user=request.user)
         obj.save()
-    return render(request, 'todo.html')
+        res = models.todoclass.objects.filter(user=request.user).order_by('-date')
+        return redirect('/todo', {'res':res})
+    res = models.todoclass.objects.filter(user=request.user).order_by('-date')
+    return render(request, 'todo.html', {'res':res})
