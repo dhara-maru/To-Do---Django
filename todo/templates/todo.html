@@ -51,7 +51,7 @@ select.form-control:focus {
                     {% csrf_token %}
                     <div class="mb-3">
                         <label for="exampleFormControlTextarea1" class="form-label">New task? Add it here!</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                        <textarea class="form-control" name="title" id="exampleFormControlTextarea1" rows="3"></textarea>
                     </div>
                     <button type="submit" class="btn btn-dark">Add Task</button>
                 </form>
