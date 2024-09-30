@@ -41,3 +41,26 @@ def todo(request):
         return redirect('/todo', {'res':res})
     res = models.todoclass.objects.filter(user=request.user).order_by('-date')
     return render(request, 'todo.html', {'res':res})
+
+# def edit_todo(request, srno):
+#     if request.method == "POST":
+#         title=request.POST.get('title')
+#         obj = models.todoclass.objects.get(srno=srno)
+#         obj.title = title
+#         obj.save()
+#         user=request.user
+#         return redirect('/todo', {'res':res})
+#     obj = models.todoclass.objects.get(srno=srno)
+#     res = models.todoclass.objects.filter(user=request.user).order_by('-date')
+#     return render(request, 'todo.html', {'res':res})
+
+def edit_todo(request, srno):
+    if request.method == "POST":
+        title = request.POST.get('title')
+        obj = models.todoclass.objects.get(srno=srno)
+        obj.title = title
+        obj.save()
+        return redirect('/todo', {'obj':obj})
+
+    obj = models.todoclass.objects.get(srno=srno)
+    return render(request, 'edit_todo.html', {'obj': obj})
