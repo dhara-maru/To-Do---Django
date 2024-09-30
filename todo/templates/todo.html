@@ -37,6 +37,9 @@
         .shadow {
           box-shadow: 0 .5rem 1rem rgb(255 91 139 / 47%) !important;
       }
+      .container{
+        margin-top:10vh;
+      }
       .form-control:focus,
 textarea.form-control:focus,
 select.form-control:focus {
@@ -47,14 +50,15 @@ select.form-control:focus {
 </head>
 <body>
     <div class="container">
-        <div class="row min-vh-100 justify-content-center align-items-center">
-            <div class="col-12 col-sm-10 col-md-8 col-lg-6">
+        <div class="row min-vh-100 align-items-start">
+            <!-- Form on the left side -->
+            <div class="col-md-4">
                 <form method="post" class="p-4 bg-light rounded shadow">
                     <div style="display:flex">
-                        <img src="{% static 'todoimg.png' %}" class="image-center" alt="TODO Logo"/><br>
+                        <img src="{% static 'todoimg.png' %}" class="image-center" alt="TODO Logo"/><br><br>
                         <a href=""><i class="fas fa-sign-out-alt"></i></a>
                     </div>
-                    <h5 class="text-center"> Hello, {{user | upper }}!</h5>
+                    <h5 class="text-center"> Hello, {{user | upper }}!</h5><br>
                     <h5 class="text-center"> 📝 Get Things Done: Your Personal Todo List </h5><br>
                     {% csrf_token %}
                     <div class="mb-3">
@@ -62,18 +66,32 @@ select.form-control:focus {
                         <textarea class="form-control" name="title" id="exampleFormControlTextarea1" rows="3"></textarea>
                     </div>
                     <button type="submit" class="btn btn-dark">Add Task</button>
-                </form><br>
+                </form>
+            </div>
+
+            <!-- Todos on the right side -->
+            <div class="col-md-8">
+                <div class="row w-100 mx-0">
                     {% for todo in res %}
-                    <div class="mb-3">
-                        <p class="form-control">{{todo.title}}</p>
-                        <a href=""><i class="fas fa-edit"></i></a>
-                        <a href=""><i class="fas fa-trash"></i></a>
+                        <div class="col-md-4 mb-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{todo.title}}</h5>
+                                    <a href="#"><i class="fas fa-edit"></i></a>
+                                    <a href="#"><i class="fas fa-trash"></i></a>
+                                </div>
+                            </div>
+                        </div>
+
+                        {% if forloop.counter|divisibleby:3 %}
+                            </div>
+                            <div class="row w-100 mx-0">
+                        {% endif %}
+                    {% endfor %}
                 </div>
-                {% endfor %}
-                
-               
             </div>
         </div>
     </div>
 </body>
+
 </html>
