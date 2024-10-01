@@ -70,8 +70,8 @@
                     {% csrf_token %}
                     <div class="mb-3">
                         <label for="exampleFormControlTextarea1" class="form-label">Edit your Task</label>
-                        <div  class="form-control" style="overflow: auto; max-height: 100px; white-space: normal;" id="exampleFormControlTextarea1" >{{obj.title}}</div>
-                    </div>
+                        <textarea name="title" class="form-control" id="exampleFormControlTextarea1" rows="4">{{obj.title}}</textarea>
+</div>
                     <button type="submit" class="btn btn-dark">Update Task</button>
                 </form>
             </div>
