@@ -12,4 +12,5 @@ urlpatterns = [
     path('login/', views.login),
     path('todo/', views.todo),
     path('edit_todo/<int:srno>', views.edit_todo, name='edit_todo'),
+    path('delete_todo/<int:srno>', views.delete_todo, name='delete_todo'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

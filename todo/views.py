@@ -42,28 +42,6 @@ def todo(request):
     res = models.todoclass.objects.filter(user=request.user).order_by('-date')
     return render(request, 'todo.html', {'res':res})
 
-# def edit_todo(request, srno):
-#     if request.method == "POST":
-#         title=request.POST.get('title')
-#         obj = models.todoclass.objects.get(srno=srno)
-#         obj.title = title
-#         obj.save()
-#         user=request.user
-#         return redirect('/todo', {'res':res})
-#     obj = models.todoclass.objects.get(srno=srno)
-#     res = models.todoclass.objects.filter(user=request.user).order_by('-date')
-#     return render(request, 'todo.html', {'res':res})
-
-# def edit_todo(request, srno):
-#     if request.method == "POST":
-#         title = request.POST.get('title')
-#         obj = models.todoclass.objects.get(srno=srno)
-#         obj.title = title
-#         obj.save()
-#         return redirect('/todo', {'obj':obj})
-
-#     obj = models.todoclass.objects.get(srno=srno)
-#     return render(request, 'edit_todo.html', {'obj': obj})
 
 def edit_todo(request, srno):
     obj = models.todoclass.objects.get(srno=srno)
@@ -76,8 +54,10 @@ def edit_todo(request, srno):
             obj.save()
             return redirect('/todo')  # Redirect after successful update
         
-        # Optionally handle the case where title is empty
-        # For example, you could add an error message to the context
-        # return render(request, 'edit_todo.html', {'obj': obj, 'error': 'Title cannot be empty.'})
-
     return render(request, 'edit_todo.html', {'obj': obj})
+
+def delete_todo(request, srno):
+    obj = models.todoclass.objects.get(srno=srno)
+    obj.delete()
+    return redirect('/todo')
+    # return render(request, 'edit_todo.html', {'obj': obj})

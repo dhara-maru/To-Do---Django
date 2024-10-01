@@ -41,6 +41,10 @@
       .container{
         margin-top:10vh;
       }
+      a{
+        text-decoration:none;
+        color:black;
+      }
       .form-control:focus,
 textarea.form-control:focus,
 select.form-control:focus {
@@ -79,7 +83,7 @@ select.form-control:focus {
                                 <div class="card-body">
                                     <h5 class="card-title">{{todo.title}}</h5>
                                     <a href="/edit_todo/{{todo.srno}}"><i class="fas fa-edit"></i></a>
-                                    <a href="#"><i class="fas fa-trash"></i></a>
+                                    <a href="/delete_todo/{{todo.srno}}"><i class="fas fa-trash"></i></a>
                                 </div>
                             </div>
                         </div>
