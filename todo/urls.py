@@ -9,6 +9,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.signup),
     path('signup/', views.signup),
+    path('signout/', views.signout, name='signout'),
     path('login/', views.login),
     path('todo/', views.todo),
     path('edit_todo/<int:srno>', views.edit_todo, name='edit_todo'),

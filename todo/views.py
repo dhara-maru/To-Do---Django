@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from todo import models
 from todo.models import todoclass
 from django.contrib.auth import authenticate, login as auth_login
+from django.contrib.auth import logout
 
 def signup(request):
     if request.method=="POST":
@@ -17,6 +18,13 @@ def signup(request):
        return redirect('/login')
        
     return render(request, 'signup.html')
+
+
+def signout(request):
+   logout(request)
+   return redirect('/login')
+
+
 
 def login(request):
     if request.method == "POST":

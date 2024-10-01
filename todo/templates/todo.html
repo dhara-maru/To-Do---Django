@@ -61,7 +61,7 @@ select.form-control:focus {
                 <form method="post" class="p-4 bg-light rounded shadow">
                     <div style="display:flex">
                         <img src="{% static 'todoimg.png' %}" class="image-center" alt="TODO Logo"/><br><br>
-                        <a href=""><i class="fas fa-sign-out-alt"></i></a>
+                        <a href="{% url 'signout' %}"><i class="fas fa-sign-out-alt"></i></a>
                     </div>
                     <h5 class="text-center"> Hello, {{user | upper }}!</h5><br>
                     <h5 class="text-center"> 📝 Get Things Done: Your Personal Todo List </h5><br>
