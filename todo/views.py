@@ -1,10 +1,14 @@
 from pyexpat.errors import messages
+from django.contrib import messages 
+
 from django . shortcuts import render, redirect
 from django.contrib.auth.models import User
 from todo import models
 from todo.models import todoclass
 from django.contrib.auth import authenticate, login as auth_login
 from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_required
+
 
 def signup(request):
     if request.method=="POST":
@@ -31,15 +35,33 @@ def login(request):
         name = request.POST.get('name')
         pwd = request.POST.get('pwd')
         
-        user=authenticate(request, username=name, password=pwd) #'username' and 'password' thse params are built-in django authentication
+        user = authenticate(request, username=name, password=pwd)
+        
         if user is not None:
             auth_login(request, user)
-            return redirect('/todo')
+            return redirect('/todo')  # Redirect to the todo page after successful login
         else:
             messages.error(request, 'Invalid username or password.')
-            return redirect('/login')
+            return redirect('/login')  # Redirect back to the login page
+            
     return render(request, 'login.html')
 
+# def login(request):
+#     if request.method == "POST":
+#         name = request.POST.get('name')
+#         pwd = request.POST.get('pwd')
+        
+#         user=authenticate(request, username=name, password=pwd) #'username' and 'password' thse params are built-in django authentication
+#         if user is not None:
+#             auth_login(request, user)
+#             return redirect('/todo')
+#         else:
+#             messages.error(request, 'Invalid username or password.')
+#             return redirect('/login')
+#     return render(request, 'login.html')
+
+
+@login_required(login_url='/login') #inbuilt login decorator from django
 def todo(request):
     if request.method == "POST":
         title=request.POST.get('title')
@@ -51,6 +73,7 @@ def todo(request):
     return render(request, 'todo.html', {'res':res})
 
 
+@login_required(login_url='/login')
 def edit_todo(request, srno):
     obj = models.todoclass.objects.get(srno=srno)
     
@@ -64,8 +87,11 @@ def edit_todo(request, srno):
         
     return render(request, 'edit_todo.html', {'obj': obj})
 
+
+
+@login_required(login_url='/login')
 def delete_todo(request, srno):
     obj = models.todoclass.objects.get(srno=srno)
     obj.delete()
     return redirect('/todo')
-    # return render(request, 'edit_todo.html', {'obj': obj})
+    
