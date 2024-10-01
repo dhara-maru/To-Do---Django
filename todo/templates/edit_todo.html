@@ -70,13 +70,13 @@
                     {% csrf_token %}
                     <div class="mb-3">
                         <label for="exampleFormControlTextarea1" class="form-label">Edit your Task</label>
-                        <input type="textarea" height="300px" class="form-control" name="title" value="{{obj.title}}" id="exampleFormControlTextarea1" rows="3">
+                        <div  class="form-control" style="overflow: auto; max-height: 100px; white-space: normal;" id="exampleFormControlTextarea1" >{{obj.title}}</div>
                     </div>
                     <button type="submit" class="btn btn-dark">Update Task</button>
                 </form>
             </div>
 
-            <!-- Todos on the right side -->
+            <!-- Todos on the right side
             <div class="col-md-8">
                 <div class="row w-100 mx-0">
                     {% for todo in res %}
@@ -96,7 +96,7 @@
                         {% endif %}
                     {% endfor %}
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </body>
