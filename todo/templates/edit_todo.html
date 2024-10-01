@@ -26,23 +26,23 @@
     <style>
         body {
             font-family: 'Nunito Sans', sans-serif;
-            height: 100vh; /* Ensure body takes full height */
+            height: 100vh; 
             display: flex;
-            align-items: center; /* Center vertically */
-            justify-content: center; /* Center horizontally */
+            align-items: center; 
+            justify-content: center;
         }
         .image-center {
             display: block;
-            margin: 0 auto; /* Center horizontally */
-            height: 100px; /* Fixed height */
-            width: 100px; /* Fixed width */
+            margin: 0 auto;
+            height: 100px; 
+            width: 100px;
         }
         .shadow {
             box-shadow: 0 .5rem 1rem rgb(255 91 139 / 47%) !important;
         }
         .container {
-            width: 80%; /* Increase container width */
-            max-width: 1200px; /* Optional: set a max width */
+            width: 80%; 
+            max-width: 1200px; 
         }
         #exampleFormControlTextarea1 {
             height: 160px;
@@ -80,27 +80,7 @@
                 </form>
             </div>
 
-            <!-- Todos on the right side
-            <div class="col-md-8">
-                <div class="row w-100 mx-0">
-                    {% for todo in res %}
-                        <div class="col-md-4 mb-3">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{todo.title}}</h5>
-                                    <a href="#"><i class="fas fa-edit"></i></a>
-                                    <a href="#"><i class="fas fa-trash"></i></a>
-                                </div>
-                            </div>
-                        </div>
-
-                        {% if forloop.counter|divisibleby:3 %}
-                            </div>
-                            <div class="row w-100 mx-0">
-                        {% endif %}
-                    {% endfor %}
-                </div>
-            </div> -->
+     
         </div>
     </div>
 </body>
