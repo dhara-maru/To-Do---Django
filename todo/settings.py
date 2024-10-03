@@ -80,7 +80,21 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'djongo',
+#         'NAME': 'college',
+#         'ENFORCE_SCHEMA': False,  # optional, disable to avoid schema validation errors
+#         'CLIENT': {
+#             'host': 'mongodb+srv://dharamongodb:gowmongodb@todocluster.uujlq.mongodb.net/',  # replace with your MongoDB connection string
+#             'username': 'dharamongodb',  # optional
+#             'password': 'gowmongodb',  # optional
+#             'authSource': 'admin',                # optional
+#             'authMechanism': 'SCRAM-SHA-1',       # optional, use appropriate mechanism
+#         }
+#     }
+# }
+# connection string : mongodb+srv://dharamongodb:gowmongodb@todocluster.uujlq.mongodb.net/
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -118,9 +132,9 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    BASE_DIR / "static",  # Add your static files directory
-]
+# STATICFILES_DIRS = [
+#     BASE_DIR / "static",  # Add your static files directory
+# ]
 
 
 # Default primary key field type
