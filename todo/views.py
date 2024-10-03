@@ -10,6 +10,7 @@ from django.contrib.auth import logout
 from django.contrib.auth.decorators import login_required
 
 
+
 def signup(request):
     if request.method=="POST":
        name = request.POST.get('name')
